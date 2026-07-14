@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.studyroom.mapper.EmployeeMapper">
+
+    <select id="pageQuery" resultType="com.studyroom.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name!=null and name!=''">
+                and name like concat('%', #{name},'%')
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <update id="update" parameterType="Employee">
+        update employee
+        <set>
+            <!-- 字符串字段补充空字符串判断，避免更新为空 -->
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="phone != null and phone != ''">phone = #{phone},</if>
+            <if test="sex != null and sex != ''">sex = #{sex},</if>
+            <!-- 修复1：idNumber → id_number（数据库列名） -->
+            <if test="idNumber != null and idNumber != ''">id_number = #{idNumber},</if>
+            <!-- 修复2：updateTime → update_time（数据库列名） -->
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <!-- 修复3：updateUser → update_user（数据库列名） -->
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        <!-- 增加 id 空值防护，避免全表更新 -->
+        where id = #{id}
+        <if test="id == null">
+            and 1 = 0
+        </if>
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studyroom.mapper.AreaMapper">
+
+    <insert id="insert" parameterType="com.studyroom.entity.Area" useGeneratedKeys="true" keyProperty="id">
+        insert into area (name, sort, status, description, seat_count,
+                         create_time, update_time, create_user, update_user)
+        values (#{name}, #{sort}, #{status}, #{description}, #{seatCount},
+                #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+    <update id="update" parameterType="com.studyroom.entity.Area">
+        update area
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="seatCount != null">seat_count = #{seatCount},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="pageQuery" resultType="com.studyroom.vo.AreaVO">
+        select * from area
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+        </where>
+        order by sort asc, create_time desc
+    </select>
+
+</mapper>

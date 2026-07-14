@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studyroom.mapper.ReservationPackageMapper">
+
+    <insert id="insert" parameterType="com.studyroom.entity.ReservationPackage" useGeneratedKeys="true" keyProperty="id">
+        insert into reservation_package (area_id, package_name, package_price, status,
+                                        package_desc, package_image, duration_hours, valid_days,
+                                        create_time, update_time, create_user, update_user)
+        values (#{areaId}, #{packageName}, #{packagePrice}, #{status},
+                #{packageDesc}, #{packageImage}, #{durationHours}, #{validDays},
+                #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+    <update id="update" parameterType="com.studyroom.entity.ReservationPackage">
+        update reservation_package
+        <set>
+            <if test="areaId != null">area_id = #{areaId},</if>
+            <if test="packageName != null and packageName != ''">package_name = #{packageName},</if>
+            <if test="packagePrice != null">package_price = #{packagePrice},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="packageDesc != null">package_desc = #{packageDesc},</if>
+            <if test="packageImage != null">package_image = #{packageImage},</if>
+            <if test="durationHours != null">duration_hours = #{durationHours},</if>
+            <if test="validDays != null">valid_days = #{validDays},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getVOById" resultType="com.studyroom.vo.ReservationPackageVO">
+        select p.id, p.area_id, a.name as area_name, p.package_name, 
+               coalesce(p.package_price, 0) as price, p.status, 
+               p.package_desc, p.package_image as image, p.duration_hours, p.valid_days,
+               p.create_time, p.update_time
+        from reservation_package p
+        left join area a on p.area_id = a.id
+        where p.id = #{id}
+    </select>
+
+    <select id="pageQuery" resultType="com.studyroom.vo.ReservationPackageVO">
+        select p.id, p.area_id, a.name as area_name, p.package_name, 
+               coalesce(p.package_price, 0) as price, p.status, 
+               p.package_desc, p.package_image as image, p.duration_hours, p.valid_days,
+               p.create_time, p.update_time
+        from reservation_package p
+        left join area a on p.area_id = a.id
+        <where>
+            <if test="packageName != null and packageName != ''">
+                and p.package_name like concat('%', #{packageName}, '%')
+            </if>
+            <if test="areaId != null">
+                and p.area_id = #{areaId}
+            </if>
+            <if test="status != null">
+                and p.status = #{status}
+            </if>
+        </where>
+        order by p.create_time desc
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select count(p.id) from reservation_package p
+        <where>
+            <if test="packageName != null and packageName != ''">
+                and p.package_name like concat('%', #{packageName}, '%')
+            </if>
+            <if test="areaId != null">
+                and p.area_id = #{areaId}
+            </if>
+            <if test="status != null">
+                and p.status = #{status}
+            </if>
+        </where>
+    </select>
+
+</mapper>

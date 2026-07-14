@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studyroom.mapper.SeatMapper">
+
+    <insert id="insert" parameterType="com.studyroom.entity.Seat" useGeneratedKeys="true" keyProperty="id">
+        insert into seat (seat_code, area_id, hour_price, seat_image, seat_description,
+                         status, has_socket, has_window,
+                         create_time, update_time, create_user, update_user)
+        values (#{seatCode}, #{areaId}, #{hourPrice}, #{seatImage}, #{seatDescription},
+                #{status}, #{hasSocket}, #{hasWindow},
+                #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+    <update id="update" parameterType="com.studyroom.entity.Seat">
+        update seat
+        <set>
+            <if test="seatCode != null and seatCode != ''">seat_code = #{seatCode},</if>
+            <if test="areaId != null">area_id = #{areaId},</if>
+            <if test="hourPrice != null">hour_price = #{hourPrice},</if>
+            <if test="seatImage != null">seat_image = #{seatImage},</if>
+            <if test="seatDescription != null">seat_description = #{seatDescription},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="hasSocket != null">has_socket = #{hasSocket},</if>
+            <if test="hasWindow != null">has_window = #{hasWindow},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getVOById" resultType="com.studyroom.vo.SeatVO">
+        select s.id, s.seat_code, s.area_id, a.name as area_name, 
+               coalesce(s.hour_price, 0) as hour_price, s.seat_image as image, s.seat_description,
+               s.status, s.has_socket, s.has_window, s.create_time, s.update_time
+        from seat s
+        left join area a on s.area_id = a.id
+        where s.id = #{id}
+    </select>
+
+    <select id="pageQuery" resultType="com.studyroom.vo.SeatVO">
+        select s.id, s.seat_code, s.area_id, a.name as area_name, 
+               coalesce(s.hour_price, 0) as hour_price, s.seat_image as image, s.seat_description,
+               s.status, s.has_socket, s.has_window, s.create_time, s.update_time
+        from seat s
+        left join area a on s.area_id = a.id
+        <where>
+            <if test="seatCode != null and seatCode != ''">
+                and s.seat_code like concat('%', #{seatCode}, '%')
+            </if>
+            <if test="areaId != null">
+                and s.area_id = #{areaId}
+            </if>
+            <if test="status != null">
+                and s.status = #{status}
+            </if>
+        </where>
+        order by s.create_time desc
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select count(s.id) from seat s
+        <where>
+            <if test="seatCode != null and seatCode != ''">
+                and s.seat_code like concat('%', #{seatCode}, '%')
+            </if>
+            <if test="areaId != null">
+                and s.area_id = #{areaId}
+            </if>
+            <if test="status != null">
+                and s.status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="listEnabledVO" resultType="com.studyroom.vo.SeatVO">
+        select s.id, s.seat_code, s.area_id, a.name as area_name, 
+               coalesce(s.hour_price, 0) as hour_price, s.seat_image as image, s.seat_description,
+               s.status, s.has_socket, s.has_window, s.create_time, s.update_time
+        from seat s
+        left join area a on s.area_id = a.id
+        where s.status = 1
+        order by s.area_id, s.seat_code
+    </select>
+
+    <select id="getActiveOrdersBySeatId" resultType="com.studyroom.entity.Orders">
+        select id, seat_id, status, start_time, end_time
+        from orders
+        where seat_id = #{seatId}
+          and status in (1, 2, 3)
+          and start_time &lt; #{endTime}
+          and end_time &gt; #{startTime}
+    </select>
+
+</mapper>

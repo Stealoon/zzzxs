@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studyroom.mapper.OrdersMapper">
+
+    <select id="pageQuery" resultType="com.studyroom.vo.OrderVO">
+        select o.id, o.number, o.status, o.user_id, o.seat_id, o.area_id, 
+               o.start_time, o.end_time, o.checkin_time, o.checkin_code, 
+               o.package_id, coalesce(o.amount, 0) as amount, 
+               o.pay_method, o.pay_status, o.order_time, o.checkout_time, 
+               o.cancel_time, o.cancel_reason, s.seat_code, a.name as area_name
+        from orders o
+        left join seat s on o.seat_id = s.id
+        left join area a on o.area_id = a.id
+        <where>
+            <if test="number != null and number != ''">
+                and o.number like concat('%', #{number}, '%')
+            </if>
+            <if test="status != null">
+                and o.status = #{status}
+            </if>
+            <if test="seatId != null">
+                and o.seat_id = #{seatId}
+            </if>
+            <if test="userId != null">
+                and o.user_id = #{userId}
+            </if>
+            <if test="beginTime != null">
+                and o.order_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and o.order_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by o.order_time desc
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select count(o.id) from orders o
+        <where>
+            <if test="number != null and number != ''">
+                and o.number like concat('%', #{number}, '%')
+            </if>
+            <if test="status != null">
+                and o.status = #{status}
+            </if>
+            <if test="seatId != null">
+                and o.seat_id = #{seatId}
+            </if>
+            <if test="userId != null">
+                and o.user_id = #{userId}
+            </if>
+            <if test="beginTime != null">
+                and o.order_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and o.order_time &lt;= #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.studyroom.entity.Orders">
+        update orders
+        <set>
+            <if test="status != null">status = #{status},</if>
+            <if test="payMethod != null">pay_method = #{payMethod},</if>
+            <if test="payStatus != null">pay_status = #{payStatus},</if>
+            <if test="amount != null">amount = #{amount},</if>
+            <if test="checkoutTime != null">checkout_time = #{checkoutTime},</if>
+            <if test="cancelReason != null">cancel_reason = #{cancelReason},</if>
+            <if test="cancelTime != null">cancel_time = #{cancelTime},</if>
+            <if test="checkinTime != null">checkin_time = #{checkinTime},</if>
+            <if test="checkinCode != null">checkin_code = #{checkinCode},</if>
+            <if test="seatId != null">seat_id = #{seatId},</if>
+            <if test="areaId != null">area_id = #{areaId},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="packageId != null">package_id = #{packageId},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.studyroom.entity.Orders">
+        insert into orders (number, status, user_id, seat_id, area_id, start_time, end_time,
+                           checkin_code, package_id, amount, pay_method, pay_status,
+                           order_time, checkout_time, cancel_time, cancel_reason)
+        values (#{number}, #{status}, #{userId}, #{seatId}, #{areaId}, #{startTime}, #{endTime},
+                #{checkinCode}, #{packageId}, #{amount}, #{payMethod}, #{payStatus},
+                #{orderTime}, #{checkoutTime}, #{cancelTime}, #{cancelReason})
+    </insert>
+
+</mapper>
