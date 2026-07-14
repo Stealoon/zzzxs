@@ -1,0 +1,72 @@
+/**
+ * UniApp 全局样式变量 (uni.scss)
+ * 在所有 .vue 文件的 <style lang="scss"> 中自动引入
+ */
+
+/* 主题色 */
+$primary-color: #4DBA87;
+$primary-light: #6FCFA8;
+$primary-dark: #3DA975;
+
+/* 文字颜色 */
+$text-color: #333333;
+$text-color-secondary: #666666;
+$text-color-placeholder: #999999;
+$text-color-disabled: #cccccc;
+
+/* 背景色 */
+$bg-color: #f5f5f5;
+$bg-color-white: #ffffff;
+$bg-color-gray: #f7f7f7;
+
+/* 边框颜色 */
+$border-color: #e8e8e8;
+$border-color-light: #f0f0f0;
+
+/* 功能色 */
+$warning-color: #ff9900;
+$success-color: #4DBA87;
+$error-color: #ff4d4f;
+$info-color: #0099ff;
+$danger-color: #ff6600;
+
+/* 订单状态色 */
+$status-pending-payment: #ff9900;
+$status-reserved: #4DBA87;
+$status-in-use: #0099ff;
+$status-completed: #999999;
+$status-cancelled: #cccccc;
+$status-expired: #ff6600;
+
+/* 圆角 */
+$border-radius-sm: 8rpx;
+$border-radius-base: 12rpx;
+$border-radius-lg: 16rpx;
+$border-radius-circle: 50%;
+
+/* 间距 */
+$spacing-xs: 10rpx;
+$spacing-sm: 20rpx;
+$spacing-base: 30rpx;
+$spacing-lg: 40rpx;
+$spacing-xl: 60rpx;
+
+/* 字号 */
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 44rpx;
+
+/* 阴影 */
+$box-shadow-base: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+$box-shadow-card: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+
+/* 导航栏 */
+$nav-bg-color: #4DBA87;
+$nav-text-color: #ffffff;
+
+/* tabBar */
+$tabbar-color: #999999;
+$tabbar-selected-color: #4DBA87;
+$tabbar-bg-color: #ffffff;

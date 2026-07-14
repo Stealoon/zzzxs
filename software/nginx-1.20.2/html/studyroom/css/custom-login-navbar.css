@@ -1,0 +1,61 @@
+/* ===== 共享自习室 - 登录页与导航栏美化 ===== */
+/* 设计主题：学术蓝 + 暖琥珀 + 深夜蓝 */
+
+/* ===== 登录页面美化 ===== */
+.login{background:linear-gradient(135deg,#1a1d29 0%,#2b3447 50%,#1a1d29 100%)!important}
+.login-box{border-radius:16px!important;box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.05)!important;overflow:hidden;animation:slideUp .6s ease!important}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.login-form{background:linear-gradient(180deg,#fff 0%,#f7f5f2 100%)!important;border-radius:0 16px 16px 0!important}
+.login-form-title{margin-bottom:50px!important}
+.login-form-title .title-label{color:#2b4a83!important;font-weight:600!important;font-size:22px!important}
+.login-form .el-input__inner{border-bottom:2px solid #d0d5dd!important;font-size:15px!important;color:#2d3748!important;height:38px!important;transition:border-color .3s ease!important}
+.login-form .el-input__inner:focus{border-bottom-color:#2b4a83!important}
+.login-form .el-input__inner::placeholder{color:#a0aec0!important}
+.login-form .input-icon{color:#2b4a83!important}
+.login-btn{background:linear-gradient(135deg,#2b4a83 0%,#1a3a6b 100%)!important;color:#fff!important;border-radius:10px!important;padding:12px 20px!important;font-size:15px!important;font-weight:500!important;letter-spacing:2px!important;border:none!important;box-shadow:0 4px 15px rgba(43,74,131,.3)!important;transition:all .3s ease!important}
+.login-btn:hover,.login-btn:focus{background:linear-gradient(135deg,#1a3a6b 0%,#0d2a52 100%)!important;color:#fff!important;transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(43,74,131,.4)!important}
+
+/* ===== 导航栏美化 ===== */
+.navbar{background:linear-gradient(90deg,#1a1d29 0%,#2b3447 100%)!important;box-shadow:0 2px 12px rgba(0,0,0,.15)!important}
+.navbar .hamburger-container{color:#e8a735!important;transition:all .3s ease!important}
+.navbar .hamburger-container:hover{background:rgba(232,167,53,.1)!important}
+.navbar .businessBtn{background:linear-gradient(135deg,#48bb78 0%,#38a169 100%)!important;border:none!important;border-radius:20px!important;padding:0 16px!important;color:#fff!important;font-size:13px!important;font-weight:500!important;box-shadow:0 0 12px rgba(72,187,120,.4)!important;transition:all .3s ease!important}
+.navbar .businessBtn:hover{transform:scale(1.05)!important;box-shadow:0 0 16px rgba(72,187,120,.6)!important}
+.navbar .businessBtn.closing{background:linear-gradient(135deg,#718096 0%,#4a5568 100%)!important;box-shadow:0 0 8px rgba(113,128,150,.3)!important}
+.navbar .operatingState{color:#e8a735!important;transition:all .3s ease!important}
+.navbar .operatingState:hover{opacity:.8!important}
+.navbar .rightStatus{color:#e8a735!important}
+.navbar .right-menu{color:#cbd5e0!important}
+.navbar .right-menu span{color:#cbd5e0!important;transition:all .3s ease!important}
+.navbar .right-menu span:hover{background:rgba(232,167,53,.15)!important;color:#e8a735!important}
+.navbar .avatar-wrapper .el-button--primary{background:rgba(232,167,53,.2)!important;border:1px solid rgba(232,167,53,.3)!important;border-radius:8px!important;color:#e8a735!important;transition:all .3s ease!important}
+.navbar .avatar-wrapper .el-button--primary:hover{background:rgba(232,167,53,.3)!important;border-color:rgba(232,167,53,.5)!important}
+.navbar .avatar-wrapper .el-button--primary.active{background:rgba(232,167,53,.4)!important;border-color:rgba(232,167,53,.6)!important}
+.userInfo{border-radius:8px!important;box-shadow:0 8px 24px rgba(0,0,0,.15)!important;border:1px solid rgba(0,0,0,.05)!important}
+.userInfo p:hover{background:#f7f5f2!important;color:#2b4a83!important}
+
+/* ===== 侧边栏美化 ===== */
+.sidebar-container{background:linear-gradient(180deg,#1a1d29 0%,#151823 100%)!important;box-shadow:2px 0 12px rgba(0,0,0,.1)!important}
+.logo{background:linear-gradient(135deg,#1a1d29 0%,#2b3447 100%)!important;border-bottom:1px solid rgba(232,167,53,.15)!important}
+.el-scrollbar{background-color:#1a1d29!important}
+.el-menu{background-color:#1a1d29!important}
+.sidebar-container .el-menu .el-menu-item{color:#a0aec0!important;margin:0 0 8px 0!important;border-radius:8px!important;transition:all .3s ease!important;border-left:3px solid transparent!important}
+.sidebar-container .el-menu .el-menu-item:hover{color:#e8a735!important;background:rgba(232,167,53,.08)!important;border-left-color:#e8a735!important}
+.sidebar-container .el-menu .router-link-active .el-menu-item{background:rgba(232,167,53,.15)!important;color:#e8a735!important;border-left-color:#e8a735!important;border-radius:0 8px 8px 0!important}
+.sidebar-container .el-submenu .el-menu-item,.sidebar-container .el-submenu>.el-submenu__title{background-color:#151823!important}
+
+/* ===== 全局过渡 ===== */
+.app-wrapper{animation:fadeIn .5s ease!important}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.main-container{background:linear-gradient(180deg,#f7f5f2 0%,#ede8e0 100%)!important}
+.sidebar-container::-webkit-scrollbar{width:4px}
+.sidebar-container::-webkit-scrollbar-thumb{background:#e8a735;border-radius:2px}
+
+/* ===== Logo 图片尺寸修复 ===== */
+/* 登录页 logo - 保持正方形比例，覆盖内联 149x38 拉伸 */
+.login-form-title img{width:48px!important;height:48px!important;border-radius:50%!important;object-fit:contain!important;margin:0 auto 8px!important;display:block!important}
+/* 侧边栏展开状态 logo */
+.logo img,
+.sidebarLogoEnter img{width:36px!important;height:36px!important;border-radius:50%!important;object-fit:contain!important}
+/* 侧边栏折叠状态 logo */
+.sidebar-logo-mini img{width:30px!important;height:30px!important;object-fit:contain!important}

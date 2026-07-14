@@ -1,0 +1,131 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {}
+  },
+  "pages": [
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/login/register",
+      "style": {
+        "navigationBarTitleText": "注册账号",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "共享自习室",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/area/area",
+      "style": {
+        "navigationBarTitleText": "选择区域",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/area/seat-list",
+      "style": {
+        "navigationBarTitleText": "座位列表"
+      }
+    },
+    {
+      "path": "pages/seat/seat-detail",
+      "style": {
+        "navigationBarTitleText": "座位详情"
+      }
+    },
+    {
+      "path": "pages/reservation/confirm",
+      "style": {
+        "navigationBarTitleText": "预约确认"
+      }
+    },
+    {
+      "path": "pages/reservation/pay",
+      "style": {
+        "navigationBarTitleText": "安全支付"
+      }
+    },
+    {
+      "path": "pages/reservation/success",
+      "style": {
+        "navigationBarTitleText": "预约成功"
+      }
+    },
+    {
+      "path": "pages/checkin/checkin",
+      "style": {
+        "navigationBarTitleText": "签到"
+      }
+    },
+    {
+      "path": "pages/order/order-list",
+      "style": {
+        "navigationBarTitleText": "我的预约",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/order/order-detail",
+      "style": {
+        "navigationBarTitleText": "预约详情"
+      }
+    },
+    {
+      "path": "pages/package/package-list",
+      "style": {
+        "navigationBarTitleText": "套餐中心",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/chat/chat",
+      "style": {
+        "navigationBarTitleText": "智能客服"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTitleText": "共享自习室",
+    "navigationBarBackgroundColor": "#4DBA87",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4DBA87",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/area/area",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  }
+}

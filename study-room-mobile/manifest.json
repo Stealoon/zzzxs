@@ -1,0 +1,82 @@
+{
+    "name" : "共享自习室",
+    "appid" : "",
+    "description" : "共享自习室预约系统移动端",
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
+    "transformPx" : false,
+    "vueVersion" : "3",
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueStyleCompiler" : "uni-app",
+        "compilerVersion" : 3,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        "modules" : {
+            "Login" : {},
+            "OAuth" : {}
+        },
+        "distribute" : {
+            "android" : {
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>"
+                ]
+            },
+            "ios" : {},
+            "sdkConfigs" : {
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "",
+                        "UniversalLinks" : ""
+                    }
+                }
+            }
+        }
+    },
+    "quickapp" : {},
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
+        },
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "你的位置信息将用于自习室导航"
+            }
+        },
+        "requiredBackgroundModes" : [],
+        "lazyCodeLoading" : "requiredComponents"
+    },
+    "h5" : {
+        "router" : {
+            "mode" : "hash",
+            "base" : "/"
+        },
+        "devServer" : {
+            "port" : 8081,
+            "https" : false,
+            "proxy" : {
+                "/user" : {
+                    "target" : "http://localhost:8080",
+                    "changeOrigin" : true,
+                    "secure" : false
+                }
+            }
+        },
+        "title" : "共享自习室",
+        "template" : "index.html"
+    },
+    "uniStatistics" : {
+        "enable" : false
+    }
+}

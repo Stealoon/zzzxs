@@ -1,0 +1,271 @@
+/* ============================================================
+ * custom-dashboard.css - 共享自习室工作台美化样式
+ * 主题：清新蓝绿色调，搭配自习室学术氛围
+ * 覆盖方式：使用高优先级选择器 + !important 确保覆盖
+ * ============================================================ */
+
+/* ----------------------------------------------------------
+ * 1. 页面整体背景
+ * ---------------------------------------------------------- */
+.dashboard-container {
+    background: linear-gradient(180deg, #f0f2f5 0%, #e8ecf1 100%) !important;
+    min-height: calc(100vh - 80px) !important;
+}
+
+/* ----------------------------------------------------------
+ * 2. 区块容器卡片美化
+ * ---------------------------------------------------------- */
+.dashboard-container.home .container {
+    border-radius: 16px !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08) !important;
+    border: none !important;
+    transition: box-shadow 0.3s ease !important;
+    overflow: hidden;
+}
+
+.dashboard-container.home .container:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ----------------------------------------------------------
+ * 3. 今日数据卡片美化（Overview）
+ * ---------------------------------------------------------- */
+.dashboard-container .overviewBox ul li {
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%) !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(74, 144, 217, 0.08) !important;
+}
+
+.dashboard-container .overviewBox ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 数据数值渐变色 */
+.dashboard-container .overviewBox .num {
+    color: #2c3e50 !important;
+    background: linear-gradient(135deg, #4A90D9, #5B6DEE);
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+}
+
+/* 标题美化 */
+.dashboard-container .overviewBox .tit {
+    color: #8c8c8c !important;
+    font-size: 13px !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* ----------------------------------------------------------
+ * 4. 订单管理卡片美化（Orderview）
+ * ---------------------------------------------------------- */
+.dashboard-container .orderviewBox ul li {
+    background: linear-gradient(135deg, #f0faff 0%, #e6f7ff 100%) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(74, 144, 217, 0.08) !important;
+}
+
+.dashboard-container .orderviewBox ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------------------------------------------------
+ * 5. 新增按钮卡片美化
+ * ---------------------------------------------------------- */
+.dashboard-container .orderviewBox ul li.add {
+    background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    border: none !important;
+}
+
+.dashboard-container .orderviewBox ul li.add:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(74, 144, 217, 0.4);
+}
+
+.dashboard-container .orderviewBox ul li.add a {
+    color: #fff !important;
+}
+
+/* ----------------------------------------------------------
+ * 6. 区块标题美化
+ * ---------------------------------------------------------- */
+.dashboard-container .homeTitle {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    border-bottom: 2px solid #4A90D9 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 16px !important;
+    display: inline-block !important;
+}
+
+/* ----------------------------------------------------------
+ * 7. homeMain flex 布局间距
+ * ---------------------------------------------------------- */
+.dashboard-container.home .homeMain {
+    gap: 20px;
+}
+
+/* ----------------------------------------------------------
+ * 8. Tab 切换美化
+ * ---------------------------------------------------------- */
+.dashboard-container .conTab {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    border: 1px solid #4A90D9 !important;
+}
+
+.dashboard-container .conTab li.active {
+    background: linear-gradient(135deg, #4A90D9, #357ABD) !important;
+    color: #fff !important;
+}
+
+/* ----------------------------------------------------------
+ * 9. 表格美化
+ * ---------------------------------------------------------- */
+.dashboard-container .tableBox {
+    border: none !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-container .tableBox th {
+    background: #f8f9fb !important;
+    color: #606266 !important;
+    font-weight: 600 !important;
+}
+
+/* ----------------------------------------------------------
+ * 10. 订单弹窗美化
+ * ---------------------------------------------------------- */
+.order-dialog .order-top,
+.order-dialog .order-middle,
+.order-dialog .order-bottom {
+    padding: 16px !important;
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+.order-dialog .order-top {
+    background: linear-gradient(135deg, #f0f7ff, #f8fbff) !important;
+}
+
+.order-dialog .order-middle {
+    background: #f8f9fb !important;
+}
+
+/* 座位信息区域（seat-info 修复后的样式） */
+.order-dialog .seat-info {
+    background: #f8f9ff !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin: 12px 0 !important;
+}
+
+.order-dialog .seat-info .seat-item {
+    padding: 8px 0 !important;
+    border-bottom: 1px dashed #e0e0e0 !important;
+}
+
+.order-dialog .seat-info .seat-item:last-child {
+    border-bottom: none !important;
+}
+
+.order-dialog .seat-info .seat-price {
+    color: #f56c6c !important;
+    font-weight: 600 !important;
+}
+
+/* ----------------------------------------------------------
+ * 11. 订单状态标签美化
+ * ---------------------------------------------------------- */
+.order-dialog .order-status {
+    background: linear-gradient(135deg, #4A90D9, #357ABD) !important;
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3) !important;
+}
+
+.order-dialog .order-status.status3 {
+    background: linear-gradient(135deg, #f56c6c, #e8553e) !important;
+    box-shadow: 0 2px 8px rgba(245, 108, 108, 0.3) !important;
+}
+
+/* ----------------------------------------------------------
+ * 12. 备注区域美化
+ * ---------------------------------------------------------- */
+.order-dialog .user-remark {
+    border-radius: 8px !important;
+}
+
+/* ----------------------------------------------------------
+ * 13. 分页器美化
+ * ---------------------------------------------------------- */
+.dashboard-container .pageList {
+    margin-top: 20px !important;
+    text-align: center !important;
+}
+
+/* ----------------------------------------------------------
+ * 14. 弹窗整体美化
+ * ---------------------------------------------------------- */
+.el-dialog {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.el-dialog__header {
+    background: linear-gradient(135deg, #f8f9ff, #eef2ff) !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* ----------------------------------------------------------
+ * 15. 操作按钮美化
+ * ---------------------------------------------------------- */
+.dashboard-container .blueBug {
+    color: #4A90D9 !important;
+}
+
+.dashboard-container .delBut {
+    color: #f56c6c !important;
+}
+
+/* ----------------------------------------------------------
+ * 16. 链接颜色统一
+ * ---------------------------------------------------------- */
+.dashboard-container a {
+    color: #4A90D9;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dashboard-container a:hover {
+    color: #357ABD;
+}
+
+/* ----------------------------------------------------------
+ * 17. 滚动条美化
+ * ---------------------------------------------------------- */
+.dashboard-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dashboard-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dashboard-container::-webkit-scrollbar-thumb {
+    background: #4A90D9;
+    border-radius: 3px;
+}
